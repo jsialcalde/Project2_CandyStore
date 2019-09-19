@@ -13,9 +13,9 @@ Plotly.d3.csv('../static/diabetes.csv', function(err, rows){
               zmin: 7,
               zmax: 17,
               colorscale: [
-                [0, 'lightskyblue'], [0.2, 'deepskyblue'],
-                [0.4, 'dodgerblue'], [0.6, 'blue'],
-                [0.8, 'mediumblue'], [1, 'darkblue']
+                [0, '#ccffff'], [0.2, '#66ccff'],
+                [0.4, '#3399ff'], [0.6, '#0066ff'],
+                [0.8, '#0000ff'], [1, '#0000cc']
               ],
             colorbar: {
               title: 'Percentage',
