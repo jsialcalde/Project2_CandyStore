@@ -1,52 +1,52 @@
-Rank,State,State_2,Diabetes Rate 2018
-1,West Virginia,WV,16.2
-2,Alabama,AL,14.5
-3,Mississippi,MS,14.3
-4,Arkansas,AR,14.1
-4,Louisiana,LA,14.1
-6,Tennessee,TN,13.9
-7,Kentucky,KY,13.8
-8,South Carolina,SC,13.3
-9,Indiana,IN,12.7
-10,Georgia,GA,12.6
-11,New Mexico,NM,12.5
-11,Texas,TX,12.5
-13,Florida,FL,12.4
-14,Ohio,OH,12.2
-14,Oklahoma,OK,12.2
-16,North Carolina,NC,12.1
-17,Delaware,DE,12
-18,Maryland,MD,11.9
-19,Kansas,KS,11.8
-19,Michigan,MI,11.8
-21,Hawaii,HI,11.5
-22,Missouri,MO,11.4
-22,Pennsylvania,PA,11.4
-24,New York,NY,11
-25,Oregon,OR,10.9
-26,Arizona,AZ,10.8
-27,Nevada,NV,10.7
-27,Rhode Island,RI,10.7
-29,Maine,ME,10.5
-29,Virginia,VA,10.5
-31,New Jersey,NJ,10.4
-32,California,CA,10.3
-32,New Hampshire,NH,10.3
-34,Illinois,IL,10.1
-34,Iowa,IA,10.1
-36,Idaho,ID,9.9
-37,Washington,WA,9.8
-38,Connecticut,CT,9.7
-39,Nebraska,NE,9.6
-39,North Dakota,ND,9.6
-41,South Dakota,SD,9.3
-41,Vermont,VT,9.3
-43,Montana,MT,9.2
-44,Minnesota,MN,8.9
-45,Wisconsin,WI,8.7
-45,Wyoming,WY,8.7
-47,Alaska,AK,8.6
-47,District of Columbia,DC,8.6
-47,Massachusetts,MA,8.6
-50,Utah,UT,8.3
-51,Colorado,CO,7.1
+,State,Diabetes Rate 2018,Population_2019
+0,West Virginia,16.2,1805832
+1,Alabama,14.5,4887871
+2,Mississippi,14.3,2986530
+3,Arkansas,14.1,3013825
+4,Louisiana,14.1,4659978
+5,Tennessee,13.9,6770010
+6,Kentucky,13.8,4468402
+7,South Carolina,13.3,5084127
+8,Indiana,12.7,6691878
+9,Georgia,12.6,10519475
+10,New Mexico,12.5,2095428
+11,Texas,12.5,29206997
+12,Florida,12.4,21299325
+13,Ohio,12.2,11689442
+14,Oklahoma,12.2,3943079
+15,North Carolina,12.1,10383620
+16,Delaware,12.0,967171
+17,Maryland,11.9,6042718
+18,Kansas,11.8,2911505
+19,Michigan,11.8,9995915
+20,Hawaii,11.5,1420491
+21,Missouri,11.4,6126452
+22,Pennsylvania,11.4,12807060
+23,New York,11.0,19542209
+24,Oregon,10.9,4190713
+25,Arizona,10.8,7171646
+26,Nevada,10.7,3034392
+27,Rhode Island,10.7,1057315
+28,Maine,10.5,1338404
+29,Virginia,10.5,8517685
+30,New Jersey,10.4,8908520
+31,California,10.3,39865590
+32,New Hampshire,10.3,1356458
+33,Illinois,10.1,12741080
+34,Iowa,10.1,3156145
+35,Idaho,9.9,1754208
+36,Washington,9.8,7535591
+37,Connecticut,9.7,3572665
+38,Nebraska,9.6,1929268
+39,North Dakota,9.6,760077
+40,South Dakota,9.3,882235
+41,Vermont,9.3,626299
+42,Montana,9.2,1062305
+43,Minnesota,8.9,5611179
+44,Wisconsin,8.7,5813568
+45,Wyoming,8.7,577737
+46,Alaska,8.6,737438
+47,District of Columbia,8.6,702455
+48,Massachusetts,8.6,6902149
+49,Utah,8.3,3161105
+50,Colorado,7.1,5695564
