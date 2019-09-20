@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Candy Consumption Dashboard</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/map-style.css">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-3">
+      <!-- <div class="col-md-3">
         <div class="well">
           <h5>SELECT Sample:</h5>
           <select id="selDataset" onchange="optionChanged(this.value)"></select>
@@ -30,11 +31,13 @@
           </div>
           <div id="sample-metadata" class="panel-body"></div>
         </div>
+      </div> -->
+      <div class="col-md-8">
+        <!-- Plotly chart will be drawn inside this DIV -->
+        <div id="myDiv"></div>
+        <!-- <script src="../static/js/map-candy.js"></script> -->
       </div>
-      <div class="col-md-7">
-        <div id="pie"></div>
-      </div>
-      <div class="col-md-2">
+      <div class="col-md-4">
         <div id="gauge"></div>
       </div>
     </div>
@@ -54,7 +57,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <!-- <script src="{{ url_for('static', filename='js/bonus.js') }}"></script> -->
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <script src="../static/js/app.js"></script>
 
 </body>
 

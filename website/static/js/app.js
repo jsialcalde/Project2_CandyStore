@@ -37,122 +37,166 @@ function buildMetadata(sample) {
 
 
 
-function buildCharts(sample) {
+// function buildCharts(sample) {
 
-  // @TODO: Use `d3.json` to fetch the sample data for the plots
+//   // @TODO: Use `d3.json` to fetch the sample data for the plots
   
-  // construct url
-   var url = (dataRoute+sample);
+//   // construct url
+//    var url = (dataRoute+sample);
 
-    // // @TODO: Build a Bubble Chart using the sample data
-    //   // Use d3 to select the panel with id of `#bubble`
-    //   var bubbleSelect = d3.select("#bubble");
+//     // // @TODO: Build a Bubble Chart using the sample data
+//     //   // Use d3 to select the panel with id of `#bubble`
+//     //   var bubbleSelect = d3.select("#bubble");
 
-    //   // Use `.html("") to clear any existing metadata
-    //   bubbleSelect.html("");
+//     //   // Use `.html("") to clear any existing metadata
+//     //   bubbleSelect.html("");
 
-    //   d3.json(url).then(function(response){
-    //     var otu_ids = response.otu_ids;
-    //     var otu_labels = response.otu_labels;
-    //     var samples = response.sample_values.map(function(item){
-    //       return parseFloat(item,2);
-    //     });
+//     //   d3.json(url).then(function(response){
+//     //     var otu_ids = response.otu_ids;
+//     //     var otu_labels = response.otu_labels;
+//     //     var samples = response.sample_values.map(function(item){
+//     //       return parseFloat(item,2);
+//     //     });
 
-    //     // console.log(otu_ids);
-    //     // console.log(otu_labels);
-    //     // console.log(samples);
+//     //     // console.log(otu_ids);
+//     //     // console.log(otu_labels);
+//     //     // console.log(samples);
 
-    //     var traceBubble = {
-    //       x: otu_ids,
-    //       y: samples,
-    //       mode: 'markers',
-    //       hovertext: otu_labels,
-    //       marker: {
-    //         size: samples,
-    //         color: otu_ids
+//     //     var traceBubble = {
+//     //       x: otu_ids,
+//     //       y: samples,
+//     //       mode: 'markers',
+//     //       hovertext: otu_labels,
+//     //       marker: {
+//     //         size: samples,
+//     //         color: otu_ids
             
-    //       }
-    //     };
+//     //       }
+//     //     };
 
-    //     var bubbleData = [traceBubble];
+//     //     var bubbleData = [traceBubble];
 
-    //     var bubbleLayout = {
-    //       title: "Belly Button Distribution",
-    //       showlegend: false
-    //     };
+//     //     var bubbleLayout = {
+//     //       title: "Belly Button Distribution",
+//     //       showlegend: false
+//     //     };
 
-    //     Plotly.newPlot("bubble",bubbleData, bubbleLayout);
-    //     buildPlot();
-      // });
+//     //     Plotly.newPlot("bubble",bubbleData, bubbleLayout);
+//     //     buildPlot();
+//       // });
       
-    // @TODO: Build a Pie Chart
+//     // @TODO: Build a Pie Chart
 
-      // Use d3 to select the panel with id of `#pie`
-      // var pieSelect = d3.select("#pie");
+//       // Use d3 to select the panel with id of `#pie`
+//       // var pieSelect = d3.select("#pie");
 
-      // // Use `.html("") to clear any existing metadata
-      // pieSelect.html("");
+//       // // Use `.html("") to clear any existing metadata
+//       // pieSelect.html("");
 
-      //   d3.json(url).then(function(response){
+//       //   d3.json(url).then(function(response){
 
-      //     var otu_ids_10 = response.otu_ids.slice(0,10);
-      //     var otu_labels_10 = response.otu_labels.slice(0,10);
-      //     var samples_10 = response.sample_values.slice(0,10).map(function(item){
-      //       return parseFloat(item,2);
-      //     });
+//       //     var otu_ids_10 = response.otu_ids.slice(0,10);
+//       //     var otu_labels_10 = response.otu_labels.slice(0,10);
+//       //     var samples_10 = response.sample_values.slice(0,10).map(function(item){
+//       //       return parseFloat(item,2);
+//       //     });
 
-      //     // console.log(otu_ids_10);
-      //     // console.log(otu_labels_10);
-      //     // console.log(samples_10);
+//       //     // console.log(otu_ids_10);
+//       //     // console.log(otu_labels_10);
+//       //     // console.log(samples_10);
 
-      //     var tracePie = {
-      //       labels: otu_ids_10,
-      //       values: samples_10,
-      //       hovertext: otu_labels_10,
-      //       type: 'pie'
-      //     };
+//       //     var tracePie = {
+//       //       labels: otu_ids_10,
+//       //       values: samples_10,
+//       //       hovertext: otu_labels_10,
+//       //       type: 'pie'
+//       //     };
 
-      //     var pieData = [tracePie];
+//       //     var pieData = [tracePie];
 
-      //     var pieLayout = {
-      //       title: "Top 10 Belly Button Samples"
-      //     };
+//       //     var pieLayout = {
+//       //       title: "Top 10 Belly Button Samples"
+//       //     };
 
-      //     Plotly.newPlot("pie",pieData, pieLayout);
-      //     buildPlot();
+//       //     Plotly.newPlot("pie",pieData, pieLayout);
+//       //     buildPlot();
 
-//       });
+// //       });
 
   
+// // }
+
+
+
+// // function init() {
+// //   // Grab a reference to the dropdown select element
+// //   var selector = d3.select("#selDataset");
+
+// //   // Use the list of sample names to populate the select options
+// //   d3.json("/names").then((sampleNames) => {
+// //     sampleNames.forEach((sample) => {
+// //       selector
+// //         .append("option")
+// //         .text(sample)
+// //         .property("value", sample);
+// //     });
+
+// //     // Use the first sample from the list to build the initial plots
+// //     const firstSample = sampleNames[0];
+// //     buildCharts(firstSample);
+// //     buildMetadata(firstSample);
+// //   });
+// // }
+
+// // function optionChanged(newSample) {
+// //   // Fetch new data each time a new sample is selected
+// //   buildCharts(newSample);
+// //   buildMetadata(newSample);
+// // }
+
+// // Initialize the dashboard
+// init();
 // }
 
 
+Plotly.d3.csv('../static/candy.csv', function(err, rows){
+  function unpack(rows, key) {
+      return rows.map(function(row) { return row[key]; });
+  }
 
-function init() {
-  // Grab a reference to the dropdown select element
-  var selector = d3.select("#selDataset");
+var data = [{
+          type: 'choropleth',
+          locationmode: 'USA-states',
+          locations: unpack(rows, 'State_2'),
+          z: unpack(rows, 'Candy Consumption Per Capita 2018'),
+          text: unpack(rows, 'State'),
+          zmin: 7,
+          zmax: 17,
+          colorscale: [
+            [0, '#ccffff'], [0.2, '#66ccff'],
+            [0.4, '#3399ff'], [0.6, '#0066ff'],
+            [0.8, '#0000ff'], [1, '#0000cc']
+          ],
+        colorbar: {
+          title: 'Percentage',
+          thickness: 20.0
+        },
+        marker: {
+          line:{
+            color: 'rgb(255,255,255)',
+            width: 2
+          }
+        }
+      }];
 
-  // Use the list of sample names to populate the select options
-  d3.json("/names").then((sampleNames) => {
-    sampleNames.forEach((sample) => {
-      selector
-        .append("option")
-        .text(sample)
-        .property("value", sample);
-    });
-
-    // Use the first sample from the list to build the initial plots
-    const firstSample = sampleNames[0];
-    buildCharts(firstSample);
-    buildMetadata(firstSample);
-  });
-}
-
-function optionChanged(newSample) {
-  // Fetch new data each time a new sample is selected
-  buildCharts(newSample);
-  buildMetadata(newSample);
-}
-
-// Initialize the dashboard
-init();
+console.log(data.locations);
+var layout = {
+      title: '2018 Candy Consumption by State',
+      geo:{
+        scope: 'usa',
+        showlakes: true,
+        lakecolor: 'rgb(255,255,255)'
+      }
+  };
+  Plotly.plot(myDiv, data, layout, {showLink: false});
+});
