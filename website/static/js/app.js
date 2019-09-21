@@ -189,7 +189,7 @@ var data = [{
         }
       }];
 
-console.log(data.locations);
+// console.log(data.locations);
 var layout = {
       title: '2018 Candy Consumption by State',
       geo:{
