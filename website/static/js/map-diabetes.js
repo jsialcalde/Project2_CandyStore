@@ -1,15 +1,40 @@
 
-Plotly.d3.csv('../static/diabetes.csv', function(err, rows){
-      function unpack(rows, key) {
-          return rows.map(function(row) { return row[key]; });
-      }
+var jsonurl = 'http://127.0.0.1:5500/test.json';
+
+Plotly.d3.json(jsonurl, function(data) {
+
+  function json_obj_to_array(jsonobj) {
+      var json_array = Object.keys(jsonobj).map(function(key) {
+        return jsonobj[key];
+      });
+
+      return json_array;
+  };
+
+  var map_abbr = json_obj_to_array(data.Abbreviation);
+  var map_data = json_obj_to_array(data["Diabetes Rate 2018"]);
+  var map_label = json_obj_to_array(data.State);
+
+  // var map_abbr = Object.keys(data.Abbreviation).map(function(key) {
+  //   return data.Abbreviation[key];
+  // });
+
+  // var map_data = Object.keys(data["Diabetes Rate 2018"]).map(function(key) {
+  //   return data["Diabetes Rate 2018"][key];
+  // });
+
+  // var map_label = Object.keys(data.State).map(function(key) {
+  //   return data.State[key];
+  // });
+
+  console.log(map_abbr);
   
- var data = [{
+ var mapdata = [{
               type: 'choropleth',
               locationmode: 'USA-states',
-              locations: unpack(rows, 'State_2'),
-              z: unpack(rows, 'Diabetes Rate 2018'),
-              text: unpack(rows, 'State'),
+              locations: map_abbr,
+              z: map_data,
+              text: map_label,
               zmin: 7,
               zmax: 17,
               colorscale: [
@@ -29,7 +54,7 @@ Plotly.d3.csv('../static/diabetes.csv', function(err, rows){
             }
           }];
 
-console.log(data.locations);
+//console.log(mapdata.locations);
   var layout = {
           title: '2018 US Diabetes Rate by State',
           geo:{
@@ -38,5 +63,5 @@ console.log(data.locations);
             lakecolor: 'rgb(255,255,255)'
           }
       };
-      Plotly.plot(myDiv, data, layout, {showLink: false});
+      Plotly.plot(myDiv, mapdata, layout, {showLink: false});
   });

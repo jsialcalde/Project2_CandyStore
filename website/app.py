@@ -18,7 +18,7 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/bellybutton.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/candy.sqlite"
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
@@ -26,16 +26,44 @@ Base = automap_base()
 # reflect the tables
 Base.prepare(db.engine, reflect=True)
 
-# Save references to each table
-Samples_Metadata = Base.classes.sample_metadata
-Samples = Base.classes.samples
+#print(db.engine.tables_names())
 
+# Save references to each table
+Candy = Base.classes.candy
+Diabetes = Base.classes.diabetes
 
 @app.route("/")
 def index():
     """Return the homepage."""
     return render_template("index.html")
 
+@app.route("/candy-consumption")
+def candy_consumption():
+    """Return candy comnsumption by state"""
+
+    # Use Pandas to perform the sql query
+    candy_stmt = db.session.query(Candy).statement
+    candy_df = pd.read_sql_query(candy_stmt, db.session.bind)
+    candy_df = candy_df[
+        ["State",
+         "State_2",
+         "Per_Capita_Consumption_Pounds_Per_Person"]]
+
+    return candy_df.to_json()
+
+@app.route("/diabetes-rate")
+def diabetes_rate():
+    """Return diabetes rate by state"""
+
+    # Use Pandas to perform the sql query
+    diabetes_stmt = db.session.query(Diabetes).statement
+    diabetes_df = pd.read_sql_query(diabetes_stmt, db.session.bind)
+    diabetes_df = diabetes_df[
+        ["State",
+         "State_2",
+         "Diabetes Rate 2018"]]
+
+    return diabetes_df.to_json()
 
 # @app.route("/names")
 # def names():

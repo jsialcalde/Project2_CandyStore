@@ -160,96 +160,110 @@ function buildMetadata(sample) {
 
 
 //plot diabetes map
-var diabetesPlot = Plotly.d3.csv('../static/diabetes.csv', function(err, rows){
-  function unpack(rows, key) {
-      return rows.map(function(row) { return row[key]; });
-  }
+var jsonurl = 'http://127.0.0.1:5000/diabetes-rate';
 
-var diabetesData = [{
-          type: 'choropleth',
-          locationmode: 'USA-states',
-          locations: unpack(rows, 'State_2'),
-          z: unpack(rows, 'Diabetes Rate 2018'),
-          text: unpack(rows, 'State'),
-          zmin: 7,
-          zmax: 17,
-          colorscale: [
-            [0, '#ccffff'], [0.2, '#66ccff'],
-            [0.4, '#3399ff'], [0.6, '#800080'],
-            [0.8, '#CD5C5C'], [1, '#DC143C']
-          ],
-        colorbar: {
-          title: 'Percentage with Diabetes',
-          thickness: 20.0
-        },
-        marker: {
-          line:{
-            color: 'rgb(255,255,255)',
-            width: 2
-          }
-        }
-      }];
+Plotly.d3.json(jsonurl, function(data) {
 
-// console.log(data.locations);
-var layout = {
-      title: '2018 Diabetes Rate by State',
-      geo:{
-        scope: 'usa',
-        showlakes: true,
-        lakecolor: 'rgb(255,255,255)'
-      }
+  function json_obj_to_array(jsonobj) {
+      var json_array = Object.keys(jsonobj).map(function(key) {
+        return jsonobj[key];
+      });
+
+      return json_array;
   };
-  Plotly.plot(myDiv, diabetesData, layout, {showLink: false});
-});
+
+  var map_abbr = json_obj_to_array(data.State_2);
+  var map_data = json_obj_to_array(data["Diabetes Rate 2018"]);
+  var map_label = json_obj_to_array(data.State);
+  
+  var mapdata = [{
+              type: 'choropleth',
+              locationmode: 'USA-states',
+              locations: map_abbr,
+              z: map_data,
+              text: map_label,
+              zmin: 7,
+              zmax: 17,
+              colorscale: [
+                [0, '#ccffff'], [0.2, '#66ccff'],
+                [0.4, '#3399ff'], [0.6, '#800080'],
+                [0.8, '#CD5C5C'], [1, '#DC143C']
+              ],
+            colorbar: {
+              title: 'Percentage',
+              thickness: 20.0
+            },
+            marker: {
+              line:{
+                color: 'rgb(255,255,255)',
+                width: 2
+              }
+            }
+          }];
+
+  var layout = {
+          title: '2018 US Diabetes Rate by State',
+          geo:{
+            scope: 'usa',
+            showlakes: true,
+            lakecolor: 'rgb(255,255,255)'
+          }
+      };
+      Plotly.plot(myDiv, mapdata, layout, {showLink: false});
+  });
 
 // Plot CandyMap
-var candyPlot = Plotly.d3.csv('../static/candy.csv', function(err, rows){
-  function unpack(rows, key) {
-      return rows.map(function(row) { return row[key]; });
-  }
+var jsonurl = 'http://127.0.0.1:5000/candy-consumption';
 
-var candyData = [{
-          type: 'choropleth',
-          locationmode: 'USA-states',
-          // hoverinfo: unpack(rows, 'State').concat('dsa%'),
-          locations: unpack(rows, 'State_2'),
-          z: unpack(rows, 'Per_Capita_Consumption (Pounds_Per_Person)'),
-          text: unpack(rows, 'State'),
-          zmin: 7,
-          zmax: 50,
-          colorscale: [
-            [0, '#ccffff'], [0.2, '#66ccff'],
-            [0.3, '#3399ff'], [0.4, '#800080'],
-            [0.5, '#CD5C5C'], [1, '#DC143C']
-          ],
-        colorbar: {
-          title: 'Per Capita Consumption',
-          thickness: 20.0
-        },
-        marker: {
-          line:{
-            color: 'rgb(255,255,255)',
-            width: 2
-          }
-        }
-      }];
+Plotly.d3.json(jsonurl, function(data) {
 
-// // create click event
-// candyPlot.on('plotly_click', function(){
-//   alert('You clicked this Plotly chart!');
-// });
+  function json_obj_to_array(jsonobj) {
+      var json_array = Object.keys(jsonobj).map(function(key) {
+        return jsonobj[key];
+      });
 
-// console.log(data.locations);
-var layout = {
-      title: '2018 Candy Consumption by State',
-      geo:{
-        scope: 'usa',
-        showlakes: true,
-        lakecolor: 'rgb(255,255,255)'
-      }
+      return json_array;
   };
-  Plotly.newPlot(CandyMap, candyData, layout, {showLink: false});
-});
+
+  var map_abbr = json_obj_to_array(data.State_2);
+  var map_data = json_obj_to_array(data["Per_Capita_Consumption_Pounds_Per_Person"]);
+  var map_label = json_obj_to_array(data.State);
+  
+  var mapdata = [{
+              type: 'choropleth',
+              locationmode: 'USA-states',
+              locations: map_abbr,
+              z: map_data,
+              text: map_label,
+              zmin: 7,
+              zmax: 17,
+              colorscale: [
+                [0, '#ccffff'], [0.2, '#66ccff'],
+                [0.4, '#3399ff'], [0.6, '#800080'],
+                [0.8, '#CD5C5C'], [1, '#DC143C']
+              ],
+            colorbar: {
+              title: 'Consumption per Capita',
+              thickness: 20.0
+            },
+            marker: {
+              line:{
+                color: 'rgb(255,255,255)',
+                width: 2
+              }
+            }
+          }];
+
+  var layout = {
+          title: '2018 Candy Consumption by State',
+          geo:{
+            scope: 'usa',
+            showlakes: true,
+            lakecolor: 'rgb(255,255,255)'
+          }
+      };
+      Plotly.plot(CandyMap, mapdata, layout, {showLink: false});
+  });
 
 // candyPlot.on('plotly_click', function(candyData){
 //   alert('You clicked this Plotly chart!');
