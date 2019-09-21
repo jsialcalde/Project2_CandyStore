@@ -3,23 +3,24 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
   <title>Candy Consumption Dashboard</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/map-style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
+<body class="body">
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 jumbotron text-center">
-        <h1>Candy Consumption Dashboard</h1>
-        <p>Use the interactive charts below to explore the dataset</p>
+  <div>
+    <div class="row" id='grid1'>
+      <div class="col-md-12">
+        <h1 class='box'>Candy Consumption Dashboard</h1>
+        <h4 class='box'>Use the interactive charts below to explore the dataset</h4>
       </div>
     </div>
-    <div class="row">
+    <div class="row" id='grid2'>
       <!-- <div class="col-md-3">
         <div class="well">
           <h5>SELECT Sample:</h5>
@@ -32,24 +33,19 @@
           <div id="sample-metadata" class="panel-body"></div>
         </div>
       </div> -->
-      <div class="col-md-8">
+      <div class="col-md-6">
         <!-- Plotly chart will be drawn inside this DIV -->
         <div id="myDiv"></div>
         <!-- <script src="../static/js/map-candy.js"></script> -->
       </div>
-      <div class="col-md-4">
-        <div id="gauge"></div>
+      <div class="col-md-6">
+        <div id="CandyMap"></div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div id="map"></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div id="bubble"></div>
+      <div id="scatter"></div>
     </div>
   </div>
 
