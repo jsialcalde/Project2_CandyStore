@@ -8,17 +8,17 @@ Plotly.d3.csv('../static/candy.csv', function(err, rows){
               type: 'choropleth',
               locationmode: 'USA-states',
               locations: unpack(rows, 'State_2'),
-              z: unpack(rows, 'Candy Consumption Per Capita 2018'),
+              z: unpack(rows, 'Per_Capita_Consumption (Pounds_Per_Person)'),
               text: unpack(rows, 'State'),
-              zmin: 7,
-              zmax: 17,
+              zmin: 0,
+              zmax: 50,
               colorscale: [
                 [0, '#ccffff'], [0.2, '#66ccff'],
                 [0.4, '#3399ff'], [0.6, '#0066ff'],
                 [0.8, '#0000ff'], [1, '#0000cc']
               ],
             colorbar: {
-              title: 'Percentage',
+              title: 'Consumption Per Capiat',
               thickness: 20.0
             },
             marker: {

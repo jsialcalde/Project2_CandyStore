@@ -3,11 +3,11 @@ Plotly.d3.csv('../static/diabetes.csv', function(err, rows){
       function unpack(rows, key) {
           return rows.map(function(row) { return row[key]; });
       }
-  
+console.log(unpack(rows, 'Abbreviation'));
  var data = [{
               type: 'choropleth',
               locationmode: 'USA-states',
-              locations: unpack(rows, 'State_2'),
+              locations: unpack(rows, 'Abbreviation'),
               z: unpack(rows, 'Diabetes Rate 2018'),
               text: unpack(rows, 'State'),
               zmin: 7,
@@ -29,7 +29,7 @@ Plotly.d3.csv('../static/diabetes.csv', function(err, rows){
             }
           }];
 
-console.log(data.locations);
+//console.log(data.locations);
   var layout = {
           title: '2018 US Diabetes Rate by State',
           geo:{

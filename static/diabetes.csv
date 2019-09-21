@@ -1,52 +1,52 @@
-,State,Diabetes Rate 2018,Population_2019
-0,West Virginia,16.2,1805832
-1,Alabama,14.5,4887871
-2,Mississippi,14.3,2986530
-3,Arkansas,14.1,3013825
-4,Louisiana,14.1,4659978
-5,Tennessee,13.9,6770010
-6,Kentucky,13.8,4468402
-7,South Carolina,13.3,5084127
-8,Indiana,12.7,6691878
-9,Georgia,12.6,10519475
-10,New Mexico,12.5,2095428
-11,Texas,12.5,29206997
-12,Florida,12.4,21299325
-13,Ohio,12.2,11689442
-14,Oklahoma,12.2,3943079
-15,North Carolina,12.1,10383620
-16,Delaware,12.0,967171
-17,Maryland,11.9,6042718
-18,Kansas,11.8,2911505
-19,Michigan,11.8,9995915
-20,Hawaii,11.5,1420491
-21,Missouri,11.4,6126452
-22,Pennsylvania,11.4,12807060
-23,New York,11.0,19542209
-24,Oregon,10.9,4190713
-25,Arizona,10.8,7171646
-26,Nevada,10.7,3034392
-27,Rhode Island,10.7,1057315
-28,Maine,10.5,1338404
-29,Virginia,10.5,8517685
-30,New Jersey,10.4,8908520
-31,California,10.3,39865590
-32,New Hampshire,10.3,1356458
-33,Illinois,10.1,12741080
-34,Iowa,10.1,3156145
-35,Idaho,9.9,1754208
-36,Washington,9.8,7535591
-37,Connecticut,9.7,3572665
-38,Nebraska,9.6,1929268
-39,North Dakota,9.6,760077
-40,South Dakota,9.3,882235
-41,Vermont,9.3,626299
-42,Montana,9.2,1062305
-43,Minnesota,8.9,5611179
-44,Wisconsin,8.7,5813568
-45,Wyoming,8.7,577737
-46,Alaska,8.6,737438
-47,District of Columbia,8.6,702455
-48,Massachusetts,8.6,6902149
-49,Utah,8.3,3161105
-50,Colorado,7.1,5695564
+,State,Diabetes Rate 2018,Population_2019,Abbreviation
+0,West Virginia,16.2,1805832,WV
+1,Alabama,14.5,4887871,AL
+2,Mississippi,14.3,2986530,MS
+3,Arkansas,14.1,3013825,AR
+4,Louisiana,14.1,4659978,LA
+5,Tennessee,13.9,6770010,TN
+6,Kentucky,13.8,4468402,KY
+7,South Carolina,13.3,5084127,SC
+8,Indiana,12.7,6691878,IN
+9,Georgia,12.6,10519475,GA
+10,New Mexico,12.5,2095428,NM
+11,Texas,12.5,29206997,TX
+12,Florida,12.4,21299325,FL
+13,Ohio,12.2,11689442,OH
+14,Oklahoma,12.2,3943079,OK
+15,North Carolina,12.1,10383620,NC
+16,Delaware,12.0,967171,DE
+17,Maryland,11.9,6042718,MD
+18,Kansas,11.8,2911505,KS
+19,Michigan,11.8,9995915,MI
+20,Hawaii,11.5,1420491,HI
+21,Missouri,11.4,6126452,MO
+22,Pennsylvania,11.4,12807060,PA
+23,New York,11.0,19542209,NY
+24,Oregon,10.9,4190713,OR
+25,Arizona,10.8,7171646,AZ
+26,Nevada,10.7,3034392,NV
+27,Rhode Island,10.7,1057315,RI
+28,Maine,10.5,1338404,ME
+29,Virginia,10.5,8517685,VA
+30,New Jersey,10.4,8908520,NJ
+31,California,10.3,39865590,CA
+32,New Hampshire,10.3,1356458,NH
+33,Illinois,10.1,12741080,IL
+34,Iowa,10.1,3156145,IA
+35,Idaho,9.9,1754208,ID
+36,Washington,9.8,7535591,WA
+37,Connecticut,9.7,3572665,CT
+38,Nebraska,9.6,1929268,NE
+39,North Dakota,9.6,760077,ND
+40,South Dakota,9.3,882235,SD
+41,Vermont,9.3,626299,VT
+42,Montana,9.2,1062305,MT
+43,Minnesota,8.9,5611179,MN
+44,Wisconsin,8.7,5813568,WI
+45,Wyoming,8.7,577737,WY
+46,Alaska,8.6,737438,AK
+47,District of Columbia,8.6,702455,
+48,Massachusetts,8.6,6902149,MA
+49,Utah,8.3,3161105,UT
+50,Colorado,7.1,5695564,CO
