@@ -203,6 +203,11 @@ Plotly.d3.json(jsonurl, function(data) {
 
   var layout = {
           title: '2018 US Diabetes Rate by State',
+          font: {
+            family: 'Open Sans, Monospace',
+            size: 16,
+            color: '#7f7f7f'
+          },
           geo:{
             scope: 'usa',
             showlakes: true,
@@ -230,39 +235,45 @@ Plotly.d3.json(jsonurl, function(data) {
   var map_label = json_obj_to_array(data.State);
   
   var mapdata = [{
-              type: 'choropleth',
-              locationmode: 'USA-states',
-              locations: map_abbr,
-              z: map_data,
-              text: map_label,
-              zmin: 7,
-              zmax: 17,
-              colorscale: [
-                [0, '#ccffff'], [0.2, '#66ccff'],
-                [0.4, '#3399ff'], [0.6, '#800080'],
-                [0.8, '#CD5C5C'], [1, '#DC143C']
-              ],
-            colorbar: {
-              title: 'Consumption per Capita',
-              thickness: 20.0
-            },
-            marker: {
-              line:{
-                color: 'rgb(255,255,255)',
-                width: 2
-              }
-            }
-          }];
+    type: 'choropleth',
+    locationmode: 'USA-states',
+    locations: map_abbr,
+    z: map_data,
+    geojson: "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/us-states.json",
+    text: map_label,
+    zmin: 0,
+    zmax: 50,
+    colorscale: [
+      [0, '#4FC1E9'], [0.1, '#48CFAD'],
+      [0.3, '#A0D468'], [0.4, '#FFCE54'],
+      [0.5, '#FC6E51'], [1, '#ED5565']
+    ],
+  colorbar: {
+    title: 'Consumption per Capita',
+    thickness: 20.0
+  },
+  marker: {
+    line:{
+      color: 'rgb(255,255,255)',
+      width: 2
+    }
+  }
+}];
 
   var layout = {
           title: '2018 Candy Consumption by State',
+          font: {
+            family: 'Open Sans, Monospace',
+            size: 16,
+            color: '#7f7f7f'
+          },
           geo:{
             scope: 'usa',
             showlakes: true,
             lakecolor: 'rgb(255,255,255)'
           }
       };
-      Plotly.plot(CandyMap, mapdata, layout, {showLink: false});
+      Plotly.newPlot(CandyMap, mapdata, layout, {showLink: false});
   });
 
 // candyPlot.on('plotly_click', function(candyData){
