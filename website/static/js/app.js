@@ -282,97 +282,107 @@ Plotly.d3.json(jsonurl, function(data) {
 // Horizontal bar and Scatter chart
 let myChart = document.getElementById('myChart').getContext('2d');
 
-       
-    Chart.defaults.global.defaultFontFamily='Lato';
-    Chart.defaults.global.defaultFontFamily=18;
-    Chart.defaults.global.defaultFontColor='#777';
-    Chart.defaults.global.animation = {
-        duration:2000,
-        easing:'easeInOutExpo'
-    }
+Chart.defaults.global.defaultFontFamily='Lato';
+Chart.defaults.global.defaultFontFamily=18;
+Chart.defaults.global.defaultFontColor='#777';
+Chart.defaults.global.animation = {
+  duration:2000,
+  easing:'easeInOutExpo'
+}
+
 //Data pull horizontal
 var combinedurl = 'http://127.0.0.1:5000/consumption_data';
-Plotly.d3.json(combinedurl, function(data) {
- function json_obj_to_array(jsonobj) {
-     var json_array = Object.keys(jsonobj).map(function(key) {
-       return jsonobj[key];
-     });
-     return json_array;
- };
- 
- var candy_c = json_obj_to_array(data.candy);
- var pounds_c = json_obj_to_array(data.pounds);
- 
- //console.log(pounds_c);
 
-    let consumeChart = new Chart(myChart, {
-        type:'horizontalBar', //bar, horizontalBar, pie, line, donut, radar, polarArea
-        data:{
-            labels: candy_c,
-            datasets:[{
-                label:'Pounds',
-                data: pounds_c,
-                backgroundColor:['orange','red','green','blue','pink'],
-                borderWidth:1,
-                borderColor:'#777',
-                hoverBorderWidth:'#000',
-                hoverBorderColor:'#000'
-            }]
-        },
-        options:{
-            title:{
-                display:true,
-                text:"Halloween Candy Consumption USA",
-                fontSize:20
-            },
-            legend:{
-                display:false,
-                position:'right',
-                labels:{
-                    fontColor:'#000'
-                }
-            },
-            layout:{
-                padding:{
-                    left:50,
-                    right:0,
-                    bottom:0,
-                    top:0
-                }
-            },
-            tooltips:{
-                enabled:true
-            }
-        }
+Plotly.d3.json(combinedurl, function(data) {
+  function json_obj_to_array(jsonobj) {
+    var json_array = Object.keys(jsonobj).map(function(key) {
+      return jsonobj[key];
     });
+
+    return json_array;
+  };
+ 
+  var candy_c = json_obj_to_array(data.candy);
+  var pounds_c = json_obj_to_array(data.pounds);
+ 
+  //console.log(pounds_c);
+
+  let consumeChart = new Chart(myChart, {
+    type:'horizontalBar', //bar, horizontalBar, pie, line, donut, radar, polarArea
+    data:{
+        labels: candy_c,
+        datasets:[{
+            label:'Pounds',
+            data: pounds_c,
+            backgroundColor:['orange','red','green','blue','pink'],
+            borderWidth:1,
+            borderColor:'#777',
+            hoverBorderWidth:'#000',
+            hoverBorderColor:'#000'
+        }]
+    },
+    options:{
+        title:{
+            display:true,
+            text:"Halloween Candy Consumption USA",
+            fontSize:20
+        },
+        legend:{
+            display:false,
+            position:'right',
+            labels:{
+                fontColor:'#000'
+            }
+        },
+        layout:{
+            padding:{
+                left:50,
+                right:0,
+                bottom:0,
+                top:0
+            }
+        },
+        tooltips:{
+            enabled:true
+        }
+    }
+  });
 });
+
+
 // Scatter
 //Data pull scatter
 var scatterurl = 'http://127.0.0.1:5000/candy-diabetes-combined';
+
 Plotly.d3.json(scatterurl, function(data) {
- function json_obj_to_array(jsonobj) {
-     var json_array = Object.keys(jsonobj).map(function(key) {
-       return jsonobj[key];
-     });
-     return json_array;
- };
+  function json_obj_to_array(jsonobj) {
+    var json_array = Object.keys(jsonobj).map(function(key) {
+      return jsonobj[key];
+    });
+
+    return json_array;
+  };
 
  
- var diabetes_rate = json_obj_to_array(data.Diabetes_Rate_2018);
- var per_capita = json_obj_to_array(data.per_capita_consumption);
+var diabetes_rate = json_obj_to_array(data.Diabetes_Rate_2018);
+var per_capita = json_obj_to_array(data.per_capita_consumption);
 
- console.log(diabetes_rate);
+var scatter_data = [];
+
+for (var i = 0; i < diabetes_rate.length; i++) {
+  scatter_data.push({x: diabetes_rate[i], y: per_capita[i]});
+}
+
+// console.log(scatter_data);
+
 var scatterChart = new Chart(scatter, {
   type: 'scatter',
   data: {
       datasets: [{
           label: 'Scatter Dataset',
-          data: [{
-              x: diabetes_rate,
-              y: per_capita
-          }]
+          data: scatter_data
       }]
-  },
+    },
   options: {
       scales: {
           xAxes: [{
@@ -380,6 +390,6 @@ var scatterChart = new Chart(scatter, {
               position: 'bottom'
           }]
       }
-  }
-});
+    }
+  });
 });
