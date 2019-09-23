@@ -72,14 +72,12 @@ def consumption():
     """Return Pounds Consumed by State"""
 
     # Use Pandas to perform the sql query
-    candy_stmt = db.session.query(Consumption).statement
-    candy_df = pd.read_sql_query(candy_stmt, db.session.bind)
-    #candy_df = candy_df[
-    #    ["State",
-    #      "State_2",
-    #      "Per_Capita_Consumption_Pounds_Per_Person"]]
+    consumption_stmt = db.session.query(Consumption).statement
+    consumption_df = pd.read_sql_query(consumption_stmt, db.session.bind)
+    consumption_df = consumption_df.sort_values(by=["pounds"], ascending=False)
+    consumption_df = consumption_df.reset_index(drop=True)
 
-    return candy_df.to_json()
+    return consumption_df.to_json()
 
 @app.route("/candy-diabetes-combined")
 def candy_diabetes_combined():
