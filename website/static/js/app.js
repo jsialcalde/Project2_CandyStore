@@ -370,7 +370,10 @@ var per_capita = json_obj_to_array(data.per_capita_consumption);
 var scatter_data = [];
 
 for (var i = 0; i < diabetes_rate.length; i++) {
-  scatter_data.push({x: diabetes_rate[i], y: per_capita[i]});
+  scatter_data.push({
+    x: diabetes_rate[i],
+    y: per_capita[i]
+  });
 }
 
 // console.log(scatter_data);
