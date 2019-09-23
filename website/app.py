@@ -32,6 +32,7 @@ Base.prepare(db.engine, reflect=True)
 Candy = Base.classes.candy
 Diabetes = Base.classes.diabetes
 Combined = Base.classes.combined
+Consumption = Base.classes.consumption
 
 @app.route("/")
 def index():
@@ -65,6 +66,20 @@ def diabetes_rate():
          "Diabetes Rate 2018"]]
 
     return diabetes_df.to_json()
+
+@app.route("/consumption_data")
+def consumption():
+    """Return Pounds Consumed by State"""
+
+    # Use Pandas to perform the sql query
+    candy_stmt = db.session.query(Consumption).statement
+    candy_df = pd.read_sql_query(candy_stmt, db.session.bind)
+    #candy_df = candy_df[
+    #    ["State",
+    #      "State_2",
+    #      "Per_Capita_Consumption_Pounds_Per_Person"]]
+
+    return candy_df.to_json()
 
 @app.route("/candy-diabetes-combined")
 def candy_diabetes_combined():
