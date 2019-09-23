@@ -6,6 +6,7 @@
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
   <title>Candy Consumption Dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script> <!--Remove if issue-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="static/css/map-style.css">
   <link rel="stylesheet" href="static/css/style.css">
@@ -16,10 +17,8 @@
   <div>
     <div class="row" id='grid1'>
       <div class="col-md-12">
-          <div class="text-center">
-          <h1 class='box'>Candy Consumption Dashboard</h1>
-          <p class='box'>Use the interactive charts below to explore the dataset</p>
-       </div>
+        <h1 class='box'>Candy Consumption Dashboard</h1>
+        <h4 class='box'>Use the interactive charts below to explore the dataset</h4>
       </div>
     </div>
     <div class="row" id='grid2'>
@@ -47,15 +46,16 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div id="scatter"></div>
+      <div id="graphs">
+        <canvas id="myChart"></canvas>
+        <canvas id="scatter"></canvas>
+      </div>
     </div>
   </div>
 
   <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="https://github.com/chartjs/Chart.js/releases/download/v2.8.0/Chart.js"></script>
-  <script src="https://github.com/chartjs/Chart.js/releases/download/v2.8.0/Chart.min.js"></script>
   <!-- <script src="{{ url_for('static', filename='js/bonus.js') }}"></script> -->
   <script src="../static/js/app.js"></script>
 
