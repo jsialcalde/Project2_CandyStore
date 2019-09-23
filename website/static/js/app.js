@@ -277,5 +277,109 @@ Plotly.d3.json(jsonurl, function(data) {
   });
 
 // candyPlot.on('plotly_click', function(candyData){
-//   alert('You clicked this Plotly chart!');
-// });
+
+//
+// Horizontal bar and Scatter chart
+let myChart = document.getElementById('myChart').getContext('2d');
+
+       
+    Chart.defaults.global.defaultFontFamily='Lato';
+    Chart.defaults.global.defaultFontFamily=18;
+    Chart.defaults.global.defaultFontColor='#777';
+    Chart.defaults.global.animation = {
+        duration:2000,
+        easing:'easeInOutExpo'
+    }
+//Data pull horizontal
+var combinedurl = 'http://127.0.0.1:5000/consumption_data';
+Plotly.d3.json(combinedurl, function(data) {
+ function json_obj_to_array(jsonobj) {
+     var json_array = Object.keys(jsonobj).map(function(key) {
+       return jsonobj[key];
+     });
+     return json_array;
+ };
+ 
+ var candy_c = json_obj_to_array(data.candy);
+ var pounds_c = json_obj_to_array(data.pounds);
+ 
+ //console.log(pounds_c);
+
+    let consumeChart = new Chart(myChart, {
+        type:'horizontalBar', //bar, horizontalBar, pie, line, donut, radar, polarArea
+        data:{
+            labels: candy_c,
+            datasets:[{
+                label:'Pounds',
+                data: pounds_c,
+                backgroundColor:['orange','red','green','blue','pink'],
+                borderWidth:1,
+                borderColor:'#777',
+                hoverBorderWidth:'#000',
+                hoverBorderColor:'#000'
+            }]
+        },
+        options:{
+            title:{
+                display:true,
+                text:"Halloween Candy Consumption USA",
+                fontSize:20
+            },
+            legend:{
+                display:false,
+                position:'right',
+                labels:{
+                    fontColor:'#000'
+                }
+            },
+            layout:{
+                padding:{
+                    left:50,
+                    right:0,
+                    bottom:0,
+                    top:0
+                }
+            },
+            tooltips:{
+                enabled:true
+            }
+        }
+    });
+});
+// Scatter
+//Data pull scatter
+var scatterurl = 'http://127.0.0.1:5000/candy-diabetes-combined';
+Plotly.d3.json(scatterurl, function(data) {
+ function json_obj_to_array(jsonobj) {
+     var json_array = Object.keys(jsonobj).map(function(key) {
+       return jsonobj[key];
+     });
+     return json_array;
+ };
+
+ 
+ var diabetes_rate = json_obj_to_array(data.Diabetes_Rate_2018);
+ var per_capita = json_obj_to_array(data.per_capita_consumption);
+
+ console.log(diabetes_rate);
+var scatterChart = new Chart(scatter, {
+  type: 'scatter',
+  data: {
+      datasets: [{
+          label: 'Scatter Dataset',
+          data: [{
+              x: diabetes_rate,
+              y: per_capita
+          }]
+      }]
+  },
+  options: {
+      scales: {
+          xAxes: [{
+              type: 'linear',
+              position: 'bottom'
+          }]
+      }
+  }
+});
+});
