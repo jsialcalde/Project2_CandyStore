@@ -39,6 +39,11 @@ def index():
     """Return the homepage."""
     return render_template("index.html")
 
+@app.route("/landing")
+def landing():
+    """ Go to Landing."""
+    return render_template("landing/landing.html")
+    
 @app.route("/candy-consumption")
 def candy_consumption():
     """Return candy comnsumption by state"""
