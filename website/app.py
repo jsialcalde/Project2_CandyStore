@@ -49,7 +49,10 @@ def candy_consumption():
     candy_df = candy_df[
         ["State",
          "State_2",
-         "Per_Capita_Consumption_Pounds_Per_Person"]]
+         "Per_Capita_Consumption_Pounds_Per_Person",
+         "1st_Place",
+         "2nd_Place",
+         "3rd_Place"]]
 
     return candy_df.to_json()
 
@@ -58,12 +61,18 @@ def diabetes_rate():
     """Return diabetes rate by state"""
 
     # Use Pandas to perform the sql query
-    diabetes_stmt = db.session.query(Diabetes).statement
+    diabetes_stmt = db.session.query(Combined).statement
     diabetes_df = pd.read_sql_query(diabetes_stmt, db.session.bind)
     diabetes_df = diabetes_df[
         ["State",
          "State_2",
-         "Diabetes Rate 2018"]]
+         "Diabetes_Rate_2018",
+         "Population_2019",
+         "1st",
+         "2nd",
+         "3rd"]]
+
+    diabetes_df["Population_with_Diabetes"] = diabetes_df["Population_2019"] * (diabetes_df["Diabetes_Rate_2018"] / 100)
 
     return diabetes_df.to_json()
 
