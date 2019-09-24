@@ -173,7 +173,7 @@ Plotly.d3.json(jsonurl, function(data) {
   };
 
   var map_abbr = json_obj_to_array(data.State_2);
-  var map_data = json_obj_to_array(data["Diabetes Rate 2018"]);
+  var map_data = json_obj_to_array(data["Diabetes_Rate_2018"]);
   var map_label = json_obj_to_array(data.State);
   
   var mapdata = [{
@@ -214,7 +214,54 @@ Plotly.d3.json(jsonurl, function(data) {
             lakecolor: 'rgb(255,255,255)'
           }
       };
-      Plotly.plot(myDiv, mapdata, layout, {showLink: false});
+      Plotly.plot(myDiv, mapdata, layout, {showLink: false})
+        .then(gd => {
+          gd.on('plotly_click', d => {
+            var pt = (d.points || [])[0]
+            if(pt) {
+              // console.log(pt);
+              console.log(pt.location);
+              // console.log(pt.fullData);
+              var ptIndex = pt.pointIndex;
+              console.log(ptIndex);
+
+              var candy_table_div = Plotly.d3.select("#myTable");
+              candy_table_div.html("");
+
+              var candy_p = candy_table_div.append("p");
+              candy_p.classed("text-center", true);
+              candy_p.classed("h2", true);
+              candy_p.text(data.State[ptIndex]);
+
+              var candy_table = candy_table_div.append("table");              
+              candy_table.classed("table", true);
+
+              var candy_thead = candy_table.append("thead");
+
+              var candy_tr = candy_thead.append("tr");
+
+              var candy_th = candy_tr.append("th").text("Population");
+              var candy_th = candy_tr.append("th").text("Diabetes Rate 2018");
+              var candy_th = candy_tr.append("th").text("Population with Diabetes");
+
+              var candy_tbody = candy_table.append("tbody");
+
+              var candy_tr = candy_tbody.append("tr");
+
+              var nf = Intl.NumberFormat();
+
+              var candy_population = parseInt(data["Population_2019"][ptIndex]);
+              candy_population = nf.format(candy_population);
+
+              var candy_population_diabetes = parseInt(data["Population_with_Diabetes"][ptIndex]);
+              candy_population_diabetes = nf.format(candy_population_diabetes);            
+
+              var candy_td = candy_tr.append("td").text(candy_population);
+              var candy_td = candy_tr.append("td").text(data["Diabetes_Rate_2018"][ptIndex]);
+              var candy_td = candy_tr.append("td").text(candy_population_diabetes);                      
+            }
+          })
+        })
   });
 
 // Plot CandyMap
@@ -273,7 +320,46 @@ Plotly.d3.json(jsonurl, function(data) {
             lakecolor: 'rgb(255,255,255)'
           }
       };
-      Plotly.newPlot(CandyMap, mapdata, layout, {showLink: false});
+      Plotly.newPlot(CandyMap, mapdata, layout, {showLink: false})
+      .then(gd => {
+        gd.on('plotly_click', d => {
+          var pt = (d.points || [])[0]
+          if(pt) {
+            // console.log(pt);
+            console.log(pt.location);
+            // console.log(pt.fullData);
+            var ptIndex = pt.pointIndex;
+            console.log(ptIndex);
+
+            var candy_table_div = Plotly.d3.select("#myTable");
+            candy_table_div.html("");
+
+            var candy_p = candy_table_div.append("p");
+            candy_p.classed("text-center", true);
+            candy_p.classed("h2", true);
+            candy_p.text(data.State[ptIndex]);
+
+            var candy_table = candy_table_div.append("table");              
+            candy_table.classed("table", true);
+
+            var candy_thead = candy_table.append("thead");
+
+            var candy_tr = candy_thead.append("tr");
+
+            var candy_th = candy_tr.append("th").text("First Place Candy");
+            var candy_th = candy_tr.append("th").text("Second Place Candy");
+            var candy_th = candy_tr.append("th").text("Third Place Candy");
+
+            var candy_tbody = candy_table.append("tbody");
+
+            var candy_tr = candy_tbody.append("tr");
+
+            var candy_td = candy_tr.append("td").text(data["1st_Place"][ptIndex]);
+            var candy_td = candy_tr.append("td").text(data["2nd_Place"][ptIndex]);
+            var candy_td = candy_tr.append("td").text(data["3rd_Place"][ptIndex]);                      
+          }
+        })
+      })      
   });
 
 // candyPlot.on('plotly_click', function(candyData){
