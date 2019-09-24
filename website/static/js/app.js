@@ -36,129 +36,6 @@ function buildMetadata(sample) {
 }
 
 
-
-// function buildCharts(sample) {
-
-//   // @TODO: Use `d3.json` to fetch the sample data for the plots
-  
-//   // construct url
-//    var url = (dataRoute+sample);
-
-//     // // @TODO: Build a Bubble Chart using the sample data
-//     //   // Use d3 to select the panel with id of `#bubble`
-//     //   var bubbleSelect = d3.select("#bubble");
-
-//     //   // Use `.html("") to clear any existing metadata
-//     //   bubbleSelect.html("");
-
-//     //   d3.json(url).then(function(response){
-//     //     var otu_ids = response.otu_ids;
-//     //     var otu_labels = response.otu_labels;
-//     //     var samples = response.sample_values.map(function(item){
-//     //       return parseFloat(item,2);
-//     //     });
-
-//     //     // console.log(otu_ids);
-//     //     // console.log(otu_labels);
-//     //     // console.log(samples);
-
-//     //     var traceBubble = {
-//     //       x: otu_ids,
-//     //       y: samples,
-//     //       mode: 'markers',
-//     //       hovertext: otu_labels,
-//     //       marker: {
-//     //         size: samples,
-//     //         color: otu_ids
-            
-//     //       }
-//     //     };
-
-//     //     var bubbleData = [traceBubble];
-
-//     //     var bubbleLayout = {
-//     //       title: "Belly Button Distribution",
-//     //       showlegend: false
-//     //     };
-
-//     //     Plotly.newPlot("bubble",bubbleData, bubbleLayout);
-//     //     buildPlot();
-//       // });
-      
-//     // @TODO: Build a Pie Chart
-
-//       // Use d3 to select the panel with id of `#pie`
-//       // var pieSelect = d3.select("#pie");
-
-//       // // Use `.html("") to clear any existing metadata
-//       // pieSelect.html("");
-
-//       //   d3.json(url).then(function(response){
-
-//       //     var otu_ids_10 = response.otu_ids.slice(0,10);
-//       //     var otu_labels_10 = response.otu_labels.slice(0,10);
-//       //     var samples_10 = response.sample_values.slice(0,10).map(function(item){
-//       //       return parseFloat(item,2);
-//       //     });
-
-//       //     // console.log(otu_ids_10);
-//       //     // console.log(otu_labels_10);
-//       //     // console.log(samples_10);
-
-//       //     var tracePie = {
-//       //       labels: otu_ids_10,
-//       //       values: samples_10,
-//       //       hovertext: otu_labels_10,
-//       //       type: 'pie'
-//       //     };
-
-//       //     var pieData = [tracePie];
-
-//       //     var pieLayout = {
-//       //       title: "Top 10 Belly Button Samples"
-//       //     };
-
-//       //     Plotly.newPlot("pie",pieData, pieLayout);
-//       //     buildPlot();
-
-// //       });
-
-  
-// // }
-
-
-
-// // function init() {
-// //   // Grab a reference to the dropdown select element
-// //   var selector = d3.select("#selDataset");
-
-// //   // Use the list of sample names to populate the select options
-// //   d3.json("/names").then((sampleNames) => {
-// //     sampleNames.forEach((sample) => {
-// //       selector
-// //         .append("option")
-// //         .text(sample)
-// //         .property("value", sample);
-// //     });
-
-// //     // Use the first sample from the list to build the initial plots
-// //     const firstSample = sampleNames[0];
-// //     buildCharts(firstSample);
-// //     buildMetadata(firstSample);
-// //   });
-// // }
-
-// // function optionChanged(newSample) {
-// //   // Fetch new data each time a new sample is selected
-// //   buildCharts(newSample);
-// //   buildMetadata(newSample);
-// // }
-
-// // Initialize the dashboard
-// init();
-// }
-
-
 //plot diabetes map
 var jsonurl = 'http://127.0.0.1:5000/diabetes-rate';
 
@@ -372,7 +249,7 @@ Chart.defaults.global.defaultFontFamily='Lato';
 Chart.defaults.global.defaultFontFamily=18;
 Chart.defaults.global.defaultFontColor='#777';
 Chart.defaults.global.animation = {
-  duration:2000,
+  duration:3000,
   easing:'easeInOutExpo'
 }
 
@@ -400,7 +277,7 @@ Plotly.d3.json(combinedurl, function(data) {
         datasets:[{
             label:'Pounds',
             data: pounds_c,
-            backgroundColor:['orange','red','green','blue','pink'],
+            backgroundColor:['#73ED0C ','#fc0303','#8B4C09','#FF5733','#C90DCC','#D5B60A','#FF4900'],
             borderWidth:1,
             borderColor:'#777',
             hoverBorderWidth:'#000',
@@ -408,6 +285,15 @@ Plotly.d3.json(combinedurl, function(data) {
         }]
     },
     options:{
+      scales:{
+        xAxes: [{type: 'linear',
+        position: 'bottom',
+        scaleLabel: {
+          display: true,
+          labelString: 'Pounds Consumed'
+        }
+        }]
+      },
         title:{
             display:true,
             text:"Halloween Candy Consumption USA",
@@ -452,6 +338,7 @@ Plotly.d3.json(scatterurl, function(data) {
  
 var diabetes_rate = json_obj_to_array(data.Diabetes_Rate_2018);
 var per_capita = json_obj_to_array(data.per_capita_consumption);
+var state_c = json_obj_to_array(data.per_capita_consumption)
 
 var scatter_data = [];
 
@@ -468,7 +355,9 @@ var scatterChart = new Chart(scatter, {
   type: 'scatter',
   data: {
       datasets: [{
-          label: 'Scatter Dataset',
+          label: 'Diabetes Rate to Consumption per capita',
+          borderColor: "red",
+          backgroundColor: "pink",
           data: scatter_data
       }]
     },
@@ -476,8 +365,26 @@ var scatterChart = new Chart(scatter, {
       scales: {
           xAxes: [{
               type: 'linear',
-              position: 'bottom'
+              position: 'bottom',
+              scaleLabel: {
+                display: true,
+                labelString: 'Diabetes Rate'
+          }
+        }],
+          yAxes: [{
+              type: 'linear',
+              position: 'left',
+              scaleLabel: {
+                display: true,
+                labelString: "Per Capita Consumption"
+              }
+          
           }]
+
+      },
+      tooltips: {
+        backgroundColor: '#000'
+        
       }
     }
   });
