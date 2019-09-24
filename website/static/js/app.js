@@ -104,6 +104,7 @@ Plotly.d3.json(jsonurl, function(data) {
 
               var candy_table_div = Plotly.d3.select("#myTable");
               candy_table_div.html("");
+              candy_table_div.classed("bg-info", true);
 
               var candy_p = candy_table_div.append("p");
               candy_p.classed("text-center", true);
