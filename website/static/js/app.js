@@ -212,7 +212,7 @@ Chart.defaults.global.defaultFontFamily='Lato';
 Chart.defaults.global.defaultFontFamily=18;
 Chart.defaults.global.defaultFontColor='#777';
 Chart.defaults.global.animation = {
-  duration:3000,
+  duration:6000,
   easing:'easeInOutExpo'
 }
 
@@ -240,11 +240,12 @@ Plotly.d3.json(combinedurl, function(data) {
         datasets:[{
             label:'Pounds',
             data: pounds_c,
-            backgroundColor:['#73ED0C ','#fc0303','#8B4C09','#FF5733','#C90DCC','#D5B60A','#FF4900'],
+            backgroundColor:['#73ED0C ','#fc0303','#8B4C09','#FF5733','#C90DCC','#D5B60A','#FF4900','#de9b54','#bdbdbd','#4e96f5','#eff54e','#6fdb67','#50d2f2','#ebeb1e','#ff5ed4','#d45068','#bb22d6','#e60914','#ff000d','#ff6bb5','#dedede','#fffa69','#ccba45','#806313','#3f93e8'],
             borderWidth:1,
-            borderColor:'#777',
-            hoverBorderWidth:'#000',
-            hoverBorderColor:'#000'
+            borderColor:'grey',
+            hoverBorderWidth:'black',
+            hoverBorderColor:'grey',
+            hoverBackgroundColor: 'black'
         }]
     },
     options:{
@@ -260,7 +261,11 @@ Plotly.d3.json(combinedurl, function(data) {
         title:{
             display:true,
             text:"Halloween Candy Consumption USA",
-            fontSize:20
+            fontSize:2,
+            fontStyle: 'bold',
+            padding:8,
+            fontColor: 'black'
+            
         },
         legend:{
             display:false,
@@ -317,14 +322,28 @@ for (var i = 0; i < diabetes_rate.length; i++) {
 var scatterChart = new Chart(scatter, {
   type: 'scatter',
   data: {
+    legend:{
+      display:false
+  },
       datasets: [{
           label: 'Diabetes Rate to Consumption per capita',
           borderColor: "red",
           backgroundColor: "pink",
+          hoverBackgroundColor: 'orange',
+          hoverBorderColor:'yellow',
           data: scatter_data
       }]
     },
   options: {
+    title:{
+      display:true,
+      text:"Diabetes Rate vs Candy Consumed",
+      fontSize:2,
+      fontStyle: 'bold',
+      padding:8,
+      fontColor: 'black'
+      
+  },
       scales: {
           xAxes: [{
               type: 'linear',
