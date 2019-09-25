@@ -1,3 +1,17 @@
+
+#myTable {
+  color: whitesmoke;
+  background-color: #00BFFF;
+  border-radius:12px;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+
+.bg-info {
+  border-radius: 12px;
+}
+
 .box {
   background: deepskyblue;
   min-height: 50px;
@@ -6,6 +20,7 @@
   font-weight: 800;
   color: #fff;
   animation: title 1.2s forwards linear;
+  border-radius: 12px;
   /* font-size: 0.1rem; */
   
 }
@@ -70,12 +85,11 @@
 
 #container1{
   background: whitesmoke;
-  min-height: 400px
+  min-height: 400px;
 }
 
 #container2{
-  background: whitesmoke
- 
+  background: whitesmoke;
 }
 
 
